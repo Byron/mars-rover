@@ -36,4 +36,7 @@ even though I couldn't get it to finish the run in any reasonable amount of time
 
 Another Java implementation had 345 implementation code, and I couldn't run it either as it was not accepting file input.
 
+An implementation from github (https://github.com/max-winderbaum/Mars-Rover-Code-Challenge) used node, with 384 SLOC, while running
+it consumed 103MB, and... it also didn't finish in a reasonable time so I had to abort it.
 
+And I tried to find a few more, but none were in a state that could run a file :(.
