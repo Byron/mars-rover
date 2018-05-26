@@ -1,0 +1,17 @@
+[package]
+name = "mars-rover"
+version = "1.0.0"
+authors = ["Sebastian Thiel <sthiel@thoughtworks.com>"]
+
+[dependencies]
+failure = "0.1.1"
+failure-tools = "4.0.2"
+
+[[bin]]
+name="rover"
+path="src/main.rs"
+
+[profile.release]
+panic = 'unwind'
+incremental = false
+overflow-checks = true
