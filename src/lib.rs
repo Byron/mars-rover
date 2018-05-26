@@ -100,8 +100,9 @@ impl FromStr for Orientation {
 }
 
 fn parse_location(line: String) -> Result<(u32, u32, Orientation), Error> {
-    match line.split_whitespace().collect::<Vec<_>>().as_slice() {
-        [x, y, d] => Ok((parse_u32(x)?, parse_u32(y)?, d.parse()?)),
+    let mut tokens = line.split_whitespace();
+    match (tokens.next(), tokens.next(), tokens.next()) {
+        (Some(x), Some(y), Some(d)) => Ok((parse_u32(x)?, parse_u32(y)?, d.parse()?)),
         _ => Err(format_err!(
             "Didn't find x and y coordinate and direction in input '{}'",
             line
@@ -110,14 +111,12 @@ fn parse_location(line: String) -> Result<(u32, u32, Orientation), Error> {
 }
 
 fn parse_dimensions(line: String) -> Result<(u32, u32), Error> {
-    let dimensions: Vec<u32> = line.split_whitespace()
-        .map(|t| parse_u32(t))
-        .collect::<Result<_, _>>()?;
+    let mut dimensions = line.split_whitespace().map(|t| parse_u32(t));
 
-    match dimensions.as_slice() {
-        &[x, y] => Ok((x, y)),
+    match (dimensions.next(), dimensions.next()) {
+        (Some(Ok(x)), Some(Ok(y))) => Ok((x, y)),
         _ => Err(format_err!(
-            "Input '{}' didn't contain exactly two numbers",
+            "Input '{}' didn't contain exactly two numbers, or contained invalid numbers",
             line
         )),
     }
