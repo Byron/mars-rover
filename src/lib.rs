@@ -24,14 +24,14 @@ pub fn answers(input: impl Read, mut output: impl io::Write) -> Result<(), Error
 
                 for action in movement.chars() {
                     match action {
-                        'M' | 'm' => match ld {
+                        'M' => match ld {
                             North => ly += 1,
                             South => ly -= 1,
                             East => lx += 1,
                             West => lx -= 1,
                         },
-                        'L' | 'l' => ld = ld.turn_left(),
-                        'R' | 'r' => ld = ld.turn_right(),
+                        'L' => ld = ld.turn_left(),
+                        'R' => ld = ld.turn_right(),
                         _ => bail!("Invalid action: '{}'", action),
                     }
                 }
@@ -90,10 +90,10 @@ impl FromStr for Orientation {
     fn from_str(s: &str) -> Result<Orientation, Error> {
         use self::Orientation::*;
         Ok(match s {
-            "N" | "n" => North,
-            "E" | "e" => East,
-            "S" | "s" => South,
-            "W" | "w" => West,
+            "N" => North,
+            "E" => East,
+            "S" => South,
+            "W" => West,
             _ => bail!("'{}' is not a valid orientation", s),
         })
     }
