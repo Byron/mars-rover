@@ -25,3 +25,8 @@ Please be warned that initial compilation takes a while.
 ## Implementation Notes
 
 * file format parsing is case-insensitive, just because I personally prefer that.
+
+## Benchmark Results
+
+The Rust release binary comes in at 482kb on OSX (stripped). Max-heap is 412kb, and it processes a 7MB file in 850ms.
+Amount of lines of code is 139, with 33 lines of bash for journey tests.

@@ -101,7 +101,7 @@ impl FromStr for Orientation {
 
 fn parse_location(line: String) -> Result<(u32, u32, Orientation), Error> {
     match line.split_whitespace().collect::<Vec<_>>().as_slice() {
-        &[x, y, d] => Ok((parse_u32(x)?, parse_u32(y)?, d.parse()?)),
+        [x, y, d] => Ok((parse_u32(x)?, parse_u32(y)?, d.parse()?)),
         _ => Err(format_err!(
             "Didn't find x and y coordinate and direction in input '{}'",
             line
