@@ -21,3 +21,7 @@ Please be warned that initial compilation takes a while.
 * [x] support for benchmarking
 * [x] support for linting
 * [x] interactive developer environment in docker
+
+## Implementation Notes
+
+* file format parsing is case-insensitive, just because I personally prefer that.
