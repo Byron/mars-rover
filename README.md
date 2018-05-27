@@ -24,7 +24,7 @@ Please be warned that initial compilation takes a while.
 
 ## Benchmark Results
 
-The Rust release binary comes in at 482kb on OSX (stripped). Max-heap is 412kb, and it processes a 7MB file in 747ms.
+The Rust release binary comes in at 482kb on OSX (stripped). Max-heap is 412kb, and it processes a 7MB file in 196ms.
 Amount of lines of code is 138, with 33 lines of bash for journey tests.
 
 One Java implementation comes in at 324 lines of implementation code. After some wrangling I was able to run it on the actual benchmark input,

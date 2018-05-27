@@ -2,10 +2,11 @@
 extern crate failure;
 
 use failure::{err_msg, Error, ResultExt};
-use std::{fmt, io::{self, BufRead, BufReader, Read}, str::FromStr};
+use std::{fmt, io::{self, BufWriter, BufRead, BufReader, Read, Write}, str::FromStr};
 
-pub fn answers(input: impl Read, mut output: impl io::Write) -> Result<(), Error> {
+pub fn answers(input: impl Read, output: impl io::Write) -> Result<(), Error> {
     let input = BufReader::new(input);
+    let mut output = BufWriter::new(output);
     let mut lines = input.lines();
 
     let first_line = lines
