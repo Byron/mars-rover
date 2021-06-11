@@ -2,7 +2,11 @@
 extern crate failure;
 
 use failure::{err_msg, Error, ResultExt};
-use std::{fmt, io::{self, BufWriter, BufRead, BufReader, Read, Write}, str::FromStr};
+use std::{
+    fmt,
+    io::{self, BufRead, BufReader, BufWriter, Read, Write},
+    str::FromStr,
+};
 
 pub fn answers(input: impl Read, output: impl io::Write) -> Result<(), Error> {
     let input = BufReader::new(input);
@@ -124,7 +128,5 @@ fn parse_dimensions(line: String) -> Result<(u32, u32), Error> {
 }
 
 fn parse_u32(t: &str) -> Result<u32, Error> {
-    t.parse::<u32>()
-        .with_context(|_err| format!("Could not parse '{}' into unsigned 32bit integer", t))
-        .map_err(Into::into)
+    t.parse::<u32>().map_err(Into::into)
 }

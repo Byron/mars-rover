@@ -2,18 +2,8 @@ fixture = tests/fixtures/input.txt
 bench_fixture = tests/fixtures/big-input.txt
 docker_image = rover_docker_developer_environment
 
-help:
-	$(info -Targets -----------------------------------------------------------------------------)
-	$(info answers                      | produce answers expected by the challenge)
-	$(info answers-in-docker            | as above, but uses docker for those without Rust)
-	$(info -- Use docker for all dependencies - run make interactively from there ----------------)
-	$(info interactive-developer-environment-in-docker | gives you everything you need to run all targets)
-	$(info -Development Targets -----------------------------------------------------------------)
-	$(info lint                         | run lints with clippy)
-	$(info benchmark                    | just for fun, really)
-	$(info profile                      | only on linux - run callgrind and annotate it)
-	$(info journey-tests                | run all stateless journey test)
-	$(info continuous-journey-tests     | run all stateless journey test whenever something changes)
+help:  ## Display this help
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 always:
 
